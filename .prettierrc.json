@@ -11,5 +11,5 @@
 	"tabWidth": 2,
 	"semi": true,
 	"singleQuote": false,
-	"useTabs": true
+	"useTabs": false
 }
