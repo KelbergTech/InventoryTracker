@@ -5,25 +5,25 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Drawer } from "expo-router/drawer";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
 import { useColorScheme } from "react-native";
-import { Text } from "react-native";
+import CustomDrawerContent from "@components/drawer/CustomContent";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
 
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "/",
-};
-
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+export const unstable_settings = {
+  // Ensure any route can link back to `/`
+  initialRouteName: "inventory",
+};
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -54,7 +54,10 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack></Stack>
+      <Drawer
+        screenOptions={{ headerTitleAlign: "center" }}
+        drawerContent={props => <CustomDrawerContent {...props} />}
+      />
     </ThemeProvider>
   );
 }
