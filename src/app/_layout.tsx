@@ -9,10 +9,9 @@ import { Drawer } from "expo-router/drawer";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-import { Text, useColorScheme } from "react-native";
+import { useColorScheme } from "react-native";
 import CustomDrawerContent from "@components/drawer/CustomContent";
-import { Stack } from "expo-router";
-import { DrawerContentComponentProps, DrawerNavigationOptions } from "@react-navigation/drawer";
+import { DrawerNavigationOptions } from "@react-navigation/drawer";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
