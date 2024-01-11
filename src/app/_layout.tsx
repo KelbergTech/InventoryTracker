@@ -9,9 +9,10 @@ import { Drawer } from "expo-router/drawer";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-import { useColorScheme } from "react-native";
+import { Text, useColorScheme } from "react-native";
 import CustomDrawerContent from "@components/drawer/CustomContent";
-
+import { Stack } from "expo-router";
+import { DrawerContentComponentProps, DrawerNavigationOptions } from "@react-navigation/drawer";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -52,12 +53,28 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
+  const testInventories = ["Inventory1", "Inventory2", "Inventory3"];
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Drawer
-        screenOptions={{ headerTitleAlign: "center" }}
-        drawerContent={props => <CustomDrawerContent {...props} />}
-      />
+        initialRouteName={`inventory/${testInventories[0]}`}
+        screenOptions={{
+          headerTitleAlign: "center",
+        }}
+        drawerContent={props => (
+          <CustomDrawerContent {...props} inventories={testInventories} />
+        )}
+      >
+        <Drawer.Screen
+          name="inventory"
+          //@ts-ignore
+          options={({ route }): DrawerNavigationOptions => {
+            return {
+              headerTitle: route.params?.params?.id ?? route.name,
+            };
+          }}
+        />
+      </Drawer>
     </ThemeProvider>
   );
 }

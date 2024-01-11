@@ -15,11 +15,10 @@ type CustomDrawerComponentProps = DrawerContentComponentProps & {
       lastName: string;
     };
   };
+  inventories: string[];
 };
 
 export default (props: CustomDrawerComponentProps) => {
-  const testList = ["Inventory1", "Inventory2", "Inventory3"];
-
   return (
     <>
       <DrawerContentScrollView {...props} style={{}}>
@@ -27,9 +26,9 @@ export default (props: CustomDrawerComponentProps) => {
           <Text style={{ paddingLeft: 12, fontSize: 24 }}>
             {props.company?.name ?? "Inventories"}
           </Text>
-          {testList.map((name, index) => (
+          {props.inventories.map((name, index) => (
             <DrawerItem
-              key={index}
+              key={name}
               label={name}
               onPress={() => {
                 props.navigation.navigate("inventory", {
