@@ -4,8 +4,8 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import { DrawerContentComponentProps } from "@react-navigation/drawer/lib/typescript/src/types";
-import { useNavigation, useRouter } from "expo-router";
-import { Button, Text, View } from "react-native";
+import { Link, useNavigation, useRouter } from "expo-router";
+import { Button, Pressable, Text, View } from "react-native";
 
 type CustomDrawerComponentProps = DrawerContentComponentProps & {
   company?: {
@@ -54,7 +54,9 @@ export default (props: CustomDrawerComponentProps) => {
           marginTop: 12,
         }}
       >
-        <Button title="Global settings" />
+        <Link href="/globalsettings" asChild>
+          <Button title="Global settings" />
+        </Link>
       </View>
       <View
         style={{

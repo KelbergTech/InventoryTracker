@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import CustomDrawerContent from "@components/drawer/CustomContent";
 import { DrawerNavigationOptions } from "@react-navigation/drawer";
+import { Stack } from "expo-router";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -56,7 +57,7 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Drawer
-        initialRouteName={`inventory/${testInventories[0]}`}
+        initialRouteName="inventory"
         screenOptions={{
           headerTitleAlign: "center",
         }}
@@ -73,6 +74,9 @@ function RootLayoutNav() {
             };
           }}
         />
+        <Drawer.Screen name="globalsettings" />
+        <Drawer.Screen name="usersettings" />
+        <Drawer.Screen name="companysettings" />
       </Drawer>
     </ThemeProvider>
   );
