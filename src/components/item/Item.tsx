@@ -1,11 +1,14 @@
 import { Text, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-type ItemProps = {
+type ItemProps = ItemType & {
+  last: boolean;
+};
+
+export type ItemType = {
   id: string;
   name: string;
   amount: number;
-  last: boolean;
 };
 
 const Item = (props: ItemProps) => {
