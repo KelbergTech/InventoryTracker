@@ -3,9 +3,10 @@ import {
   DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { DrawerContentComponentProps } from "@react-navigation/drawer/lib/typescript/src/types";
-import { Link, useNavigation, useRouter } from "expo-router";
+import { DrawerContentComponentProps } from "@react-navigation/drawer";
+import { Link } from "expo-router";
 import { Button, Pressable, Text, View } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 type CustomDrawerComponentProps = DrawerContentComponentProps & {
   company?: {
@@ -19,15 +20,18 @@ type CustomDrawerComponentProps = DrawerContentComponentProps & {
 };
 
 export default (props: CustomDrawerComponentProps) => {
+  const { colors } = useTheme();
+
   return (
     <>
-      <DrawerContentScrollView {...props} style={{}}>
-        <View style={{}}>
-          <Text style={{ paddingLeft: 12, fontSize: 24 }}>
+      <DrawerContentScrollView {...props}>
+        <View>
+          <Text style={{ color: colors.text, paddingLeft: 12, fontSize: 24 }}>
             {props.company?.name ?? "Inventories"}
           </Text>
           {props.inventories.map((name, index) => (
             <DrawerItem
+              labelStyle={{ color: colors.text }}
               key={name}
               label={name}
               onPress={() => {
@@ -41,7 +45,7 @@ export default (props: CustomDrawerComponentProps) => {
           {props.company ? (
             <View style={{ paddingLeft: 12 }}>
               <Text
-                style={{ fontSize: 24 }}
+                style={{ fontSize: 24, color: colors.text }}
               >{`${props.company.user.firstName} ${props.company.user.lastName}`}</Text>
             </View>
           ) : null}

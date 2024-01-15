@@ -1,9 +1,12 @@
 import { Text, View } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 export default () => {
+  const { colors } = useTheme();
+
   return (
     <View>
-      <Text>Global Settings</Text>
+      <Text style={{ color: colors.text }}>Global Settings</Text>
     </View>
   );
 };

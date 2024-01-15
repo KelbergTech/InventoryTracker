@@ -1,4 +1,4 @@
-import Item, { ItemType } from "@components/item/Item";
+import { ItemType } from "@components/item/Item";
 import ItemList from "@components/item/ItemList";
 import { useLocalSearchParams } from "expo-router";
 import { View, Text } from "react-native";
