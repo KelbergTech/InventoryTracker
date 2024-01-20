@@ -4,7 +4,7 @@ export default function ItemLayout() {
   return (
     <Stack>
       <Stack.Screen name="[id]" />
-      <Stack.Screen name="additem" />
+      <Stack.Screen name="add" />
     </Stack>
   );
 }

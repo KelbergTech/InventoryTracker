@@ -1,5 +1,6 @@
-import { Text, View } from "react-native";
+import { Text, View, useColorScheme } from "react-native";
 import { FontAwesome6 } from "@expo/vector-icons";
+import Colors from "@/constants/Colors";
 
 type ItemProps = ItemType & {
   last: boolean;
@@ -18,7 +19,7 @@ const Item = (props: ItemProps) => {
   const SubtractOneFromAmount = () => {
     console.log("-1 from amount");
   };
-
+  const colorScheme = useColorScheme();
   return (
     <View
       style={[
@@ -29,19 +30,24 @@ const Item = (props: ItemProps) => {
           padding: 12,
           borderTopWidth: 2,
           borderColor: "black",
+          backgroundColor: Colors[colorScheme ?? "dark"].background,
         },
         props.last ? { borderBottomWidth: 2 } : {},
       ]}
     >
       <View>
-        <Text>{props.name}</Text>
+        <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
+          {props.name}
+        </Text>
       </View>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <FontAwesome6
-          name="caret-left"
-          style={{ fontSize: 28 }}
-          onPress={() => SubtractOneFromAmount()}
-        />
+        <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
+          <FontAwesome6
+            name="caret-left"
+            style={{ fontSize: 28 }}
+            onPress={() => SubtractOneFromAmount()}
+          />
+        </Text>
         <View
           style={{
             minWidth: 16,
@@ -50,13 +56,20 @@ const Item = (props: ItemProps) => {
             marginLeft: 6,
           }}
         >
-          <Text style={{ fontSize: 16 }}>{props.amount}</Text>
+          <Text
+            style={{ fontSize: 16, color: Colors[colorScheme ?? "dark"].text }}
+          >
+            {props.amount}
+          </Text>
         </View>
-        <FontAwesome6
-          name="caret-right"
-          style={{ fontSize: 28 }}
-          onPress={() => AddOneToAmount()}
-        />
+
+        <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
+          <FontAwesome6
+            name="caret-right"
+            style={{ fontSize: 28 }}
+            onPress={() => AddOneToAmount()}
+          />
+        </Text>
       </View>
     </View>
   );
