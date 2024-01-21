@@ -25,7 +25,7 @@ SplashScreen.preventAutoHideAsync();
 
 export const unstable_settings = {
   // Ensure any route can link back to `/`
-  initialRouteName: "/index",
+  initialRouteName: "(inventory)",
 };
 
 export default function RootLayout() {
@@ -57,7 +57,7 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack initialRouteName="/index">
+      <Stack initialRouteName="(inventory)">
         <Stack.Screen name="(inventory)" options={{ headerShown: false }} />
         <Stack.Screen name="item" />
       </Stack>
