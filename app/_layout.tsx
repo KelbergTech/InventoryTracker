@@ -57,8 +57,11 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack initialRouteName="(inventory)">
-        <Stack.Screen name="(inventory)" options={{ headerShown: false }} />
+      <Stack
+        initialRouteName="(inventory)"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="(inventory)" />
         <Stack.Screen name="item" />
       </Stack>
     </ThemeProvider>
