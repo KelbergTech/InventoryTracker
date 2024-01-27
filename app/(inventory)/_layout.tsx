@@ -1,9 +1,9 @@
-import { Drawer } from "expo-router/drawer";
 import { DrawerNavigationOptions } from "@react-navigation/drawer";
-
+import { Drawer } from "expo-router/drawer";
 import { useColorScheme } from "react-native";
-import CustomDrawerContent from "@/components/drawer/CustomContent";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import CustomDrawerContent from "@/components/drawer/CustomContent";
 import Colors from "@/constants/Colors";
 
 export default function DrawerLayout() {

@@ -2,11 +2,11 @@ import {
   DrawerContentScrollView,
   DrawerItem,
   DrawerItemList,
+  DrawerContentComponentProps,
 } from "@react-navigation/drawer";
-import { DrawerContentComponentProps } from "@react-navigation/drawer";
+import { useTheme } from "@react-navigation/native";
 import { Link } from "expo-router";
 import { Button, Pressable, Text, View } from "react-native";
-import { useTheme } from "@react-navigation/native";
 
 type CustomDrawerComponentProps = DrawerContentComponentProps & {
   company?: {

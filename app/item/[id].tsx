@@ -1,6 +1,7 @@
-import Colors from "@/constants/Colors";
 import { useLocalSearchParams } from "expo-router";
 import { Text, useColorScheme } from "react-native";
+
+import Colors from "@/constants/Colors";
 
 const Item = () => {
   const colorScheme = useColorScheme();

@@ -1,4 +1,5 @@
 import { FlatList, View } from "react-native";
+
 import Item, { ItemType } from "./Item";
 
 type ItemListProps = {

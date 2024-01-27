@@ -1,5 +1,5 @@
-import { Tabs } from "expo-router/tabs";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { Tabs } from "expo-router/tabs";
 
 export default () => {
   return (

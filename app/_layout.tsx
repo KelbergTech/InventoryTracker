@@ -1,4 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome6";
+import { DrawerNavigationOptions } from "@react-navigation/drawer";
 import {
   DarkTheme,
   DefaultTheme,
@@ -6,15 +7,14 @@ import {
   useTheme,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
 import { Drawer } from "expo-router/drawer";
-import { DrawerNavigationOptions } from "@react-navigation/drawer";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-
 import { useColorScheme } from "react-native";
-import CustomDrawerContent from "@/components/drawer/CustomContent";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Stack } from "expo-router";
+
+import CustomDrawerContent from "@/components/drawer/CustomContent";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
