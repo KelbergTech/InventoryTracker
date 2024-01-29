@@ -1,7 +1,7 @@
-import { Pressable, Text, View, useColorScheme } from "react-native";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { Pressable, Text, View, useColorScheme } from "react-native";
+
 import Colors from "@/constants/Colors";
-import { useRouter } from "expo-router";
 
 type ItemProps = ItemType & {
   last: boolean;
@@ -14,7 +14,6 @@ export type ItemType = {
 };
 
 const Item = (props: ItemProps) => {
-  const router = useRouter();
   const AddOneToAmount = () => {
     console.log("+1 to amount");
   };
@@ -24,9 +23,9 @@ const Item = (props: ItemProps) => {
   const colorScheme = useColorScheme();
   return (
     <Pressable
-      android_ripple={{ color: "grey", radius: 4 }}
+      android_ripple={{ color: Colors[colorScheme ?? "dark"].tabIconSelected, foreground: true }}
       onPress={() => {
-        router.push({ pathname: "/item/[id]", params: { id: props.id } });
+        console.log("Pressed");
       }}
     >
       <View
@@ -49,13 +48,14 @@ const Item = (props: ItemProps) => {
           </Text>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
-            <FontAwesome6
-              name="caret-left"
-              style={{ fontSize: 28 }}
-              onPress={() => SubtractOneFromAmount()}
-            />
-          </Text>
+          <Pressable onPress={SubtractOneFromAmount} style={{ padding: 8 }}>
+            <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
+              <FontAwesome6
+                name="caret-left"
+                style={{ fontSize: 28 }}
+              />
+            </Text>
+          </Pressable>
           <View
             style={{
               minWidth: 16,
@@ -73,13 +73,13 @@ const Item = (props: ItemProps) => {
               {props.amount}
             </Text>
           </View>
-          <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
-            <FontAwesome6
-              name="caret-right"
-              style={{ fontSize: 28 }}
-              onPress={() => AddOneToAmount()}
-            />
-          </Text>
+          <Pressable onPress={AddOneToAmount} android_ripple={{ radius: 16, color: "red", borderless: true, foreground: true }} style={{ padding: 8 }}>
+            <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
+              <FontAwesome6
+                name="caret-right"
+                style={{ fontSize: 28 }}
+              />
+            </Text></Pressable>
         </View>
       </View>
     </Pressable>
