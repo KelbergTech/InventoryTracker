@@ -1,5 +1,4 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome6";
-import { DrawerNavigationOptions } from "@react-navigation/drawer";
 import {
   DarkTheme,
   DefaultTheme,
@@ -15,6 +14,8 @@ import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import CustomDrawerContent from "@/components/drawer/CustomContent";
+
+import "../supertoken.config";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
