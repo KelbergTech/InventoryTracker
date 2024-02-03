@@ -1,44 +1,37 @@
-// import React, { useState, useEffect } from "react";
-// import { Text, View, StyleSheet, Button } from "react-native";
-// import { BarCodeScanner } from "expo-barcode-scanner";
-//
-// const CustomBarCodeScanner = () => {
-//   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-//   const [scanned, setScanned] = useState(false);
-//
-//   useEffect(() => {
-//     const getBarCodeScannerPermissions = async () => {
-//       const { status } = await BarCodeScanner.requestPermissionsAsync();
-//       setHasPermission(status === "granted");
-//     };
-//
-//     getBarCodeScannerPermissions();
-//   }, []);
-//
-//   const handleBarCodeScanned = ({ type, data }: any) => {
-//     setScanned(true);
-//     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-//   };
-//
-//   if (hasPermission === null) {
-//     return <Text>Requesting for camera permission</Text>;
-//   }
-//   if (hasPermission === false) {
-//     return <Text>No access to camera</Text>;
-//   }
-//
-//   return (
-//     <View>
-//       <Text>BarCodeScanner</Text>
-//       <BarCodeScanner
-//         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-//         style={StyleSheet.absoluteFillObject}
-//       />
-//       {scanned && (
-//         <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
-//       )}
-//     </View>
-//   );
-// };
-//
-// export default CustomBarCodeScanner;
+import {
+  BarcodeScanningResult,
+  CameraView,
+  useCameraPermissions,
+} from "expo-camera/next";
+import { useState } from "react";
+import { View } from "react-native";
+const CustomBarcodeScanner = () => {
+  const [permission, requestPermission] = useCameraPermissions();
+  const [scanned, setScanned] = useState<boolean>(false);
+
+  if (!permission) {
+    requestPermission();
+  }
+
+  if (permission === null || !permission.granted) {
+    return null;
+  }
+
+  const handleBarcodeScanned = (scanningResult: BarcodeScanningResult) => {
+    // I think this could potentially be an unhandled issue, if the state is not reset to false if something goes wrong...
+    if (!scanned) {
+      setScanned(true);
+      console.log("Barcode scanned data:", scanningResult);
+    }
+  };
+
+  return (
+    <View style={{}}>
+      <CameraView
+        style={{ height: "100%", width: "100%" }}
+        onBarcodeScanned={handleBarcodeScanned}
+      />
+    </View>
+  );
+};
+export default CustomBarcodeScanner;
