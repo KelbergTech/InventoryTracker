@@ -9,9 +9,10 @@ module.exports = function (api) {
       [
         "module-resolver",
         {
+          root: "./src",
           alias: {
-            "@components": "./src/components",
-            "@assets": "./src/assets",
+            "@components": "./components",
+            "@assets": "./assets",
           },
         },
       ],
