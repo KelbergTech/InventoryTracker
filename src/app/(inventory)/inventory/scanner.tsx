@@ -1,5 +1,6 @@
-import CustomBarCodeScanner from "@components/barcodescanner";
 import { View } from "react-native";
+
+import CustomBarCodeScanner from "@/components/barcodescanner";
 
 export default function Scanner() {
   return (

@@ -16,7 +16,6 @@ const Index = () => {
   // }, []);
   return (
     <>
-      <Text className="text-red-400">Test</Text>
       <CustomText variant="primary" className="text-red-200">
         Main screen
       </CustomText>
