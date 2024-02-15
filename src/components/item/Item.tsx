@@ -23,7 +23,10 @@ const Item = (props: ItemProps) => {
   const colorScheme = useColorScheme();
   return (
     <Pressable
-      android_ripple={{ color: Colors[colorScheme ?? "dark"].tabIconSelected, foreground: true }}
+      android_ripple={{
+        color: Colors[colorScheme ?? "dark"].tabIconSelected,
+        foreground: true,
+      }}
       onPress={() => {
         console.log("Pressed");
       }}
@@ -50,10 +53,7 @@ const Item = (props: ItemProps) => {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Pressable onPress={SubtractOneFromAmount} style={{ padding: 8 }}>
             <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
-              <FontAwesome6
-                name="caret-left"
-                style={{ fontSize: 28 }}
-              />
+              <FontAwesome6 name="caret-left" style={{ fontSize: 28 }} />
             </Text>
           </Pressable>
           <View
@@ -73,13 +73,20 @@ const Item = (props: ItemProps) => {
               {props.amount}
             </Text>
           </View>
-          <Pressable onPress={AddOneToAmount} android_ripple={{ radius: 16, color: "red", borderless: true, foreground: true }} style={{ padding: 8 }}>
+          <Pressable
+            onPress={AddOneToAmount}
+            android_ripple={{
+              radius: 16,
+              color: "red",
+              borderless: true,
+              foreground: true,
+            }}
+            style={{ padding: 8 }}
+          >
             <Text style={{ color: Colors[colorScheme ?? "dark"].text }}>
-              <FontAwesome6
-                name="caret-right"
-                style={{ fontSize: 28 }}
-              />
-            </Text></Pressable>
+              <FontAwesome6 name="caret-right" style={{ fontSize: 28 }} />
+            </Text>
+          </Pressable>
         </View>
       </View>
     </Pressable>

@@ -1,10 +1,6 @@
+import "../global.css";
 import FontAwesome from "@expo/vector-icons/FontAwesome6";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-  useTheme,
-} from "@react-navigation/native";
+import { ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { Drawer } from "expo-router/drawer";
@@ -13,6 +9,7 @@ import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+import { DefaultTheme, DarkTheme } from "@/components/Styled/Styled";
 import CustomDrawerContent from "@/components/drawer/CustomContent";
 
 import "../supertoken.config";
@@ -31,7 +28,7 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    Geist: require("@assets/fonts/Geist-Regular.otf"),
+    Geist: require("@/assets/fonts/Geist-Regular.otf"),
     ...FontAwesome.font,
   });
 
